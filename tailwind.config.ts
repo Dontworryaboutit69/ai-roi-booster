@@ -55,7 +55,9 @@ export default {
 					DEFAULT: 'hsl(var(--input-background))',
 					border: 'hsl(var(--input-border))',
 					'border-focus': 'hsl(var(--input-border-focus))'
-				}
+				},
+				border: 'hsl(var(--border))',
+				ring: 'hsl(var(--ring))'
 			},
 			fontFamily: {
 				heading: ['var(--font-heading)'],
