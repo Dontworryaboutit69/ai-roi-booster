@@ -43,6 +43,10 @@
     
     --border: 220 20% 85%;
     --ring: 220 70% 50%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 15% 50%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
     
     --input-background: 0 0% 100%;
     --input-border: 220 20% 85%;
@@ -88,6 +92,10 @@
     
     --border: 220 15% 25%;
     --ring: 220 70% 55%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 15% 60%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 92%;
     
     --input-background: 220 15% 15%;
     --input-border: 220 15% 25%;
