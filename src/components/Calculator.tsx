@@ -177,22 +177,22 @@ export default function Calculator() {
   };
 
   return (
-    <div className="min-h-screen gradient-background p-4 md:p-8">
+    <div className="min-h-screen gradient-background p-2 sm:p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="gradient-primary rounded-t-3xl p-8 text-center text-white shadow-neon">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4 text-white">AI Payback Estimator</h1>
-          <p className="text-xl opacity-90 text-white">Calculate your return on AI automation investment</p>
+        <div className="gradient-primary rounded-t-3xl p-4 sm:p-6 md:p-8 text-center text-white shadow-neon">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-2 sm:mb-4 text-white">AI Payback Estimator</h1>
+          <p className="text-sm sm:text-lg md:text-xl opacity-90 text-white">Calculate your return on AI automation investment</p>
         </div>
         
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-0 bg-card rounded-b-3xl shadow-neon overflow-hidden border border-card-border">
           {/* Inputs Section */}
-          <div className="p-8 bg-secondary/20 border-r border-card-border overflow-y-auto max-h-[80vh]">
+          <div className="p-4 sm:p-6 md:p-8 bg-secondary/20 lg:border-r border-card-border overflow-y-auto max-h-[80vh]">
             
             {/* Outbound Section */}
-            <Card className="p-6 mb-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
-              <h2 className="text-xl font-bold text-center mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
+            <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-center mb-4 sm:mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
                 📱 Outbound Leads (Webforms, FB/IG, Google Forms)
               </h2>
               
@@ -263,8 +263,8 @@ export default function Calculator() {
             </Card>
             
             {/* Inbound Section */}
-            <Card className="p-6 mb-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
-              <h2 className="text-xl font-bold text-center mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
+            <Card className="p-4 sm:p-6 mb-4 sm:mb-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-center mb-4 sm:mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
                 📞 Inbound Calls
               </h2>
               
@@ -404,8 +404,8 @@ export default function Calculator() {
             
 
             {/* Pricing Section */}
-            <Card className="p-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
-              <h2 className="text-xl font-bold text-center mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
+            <Card className="p-4 sm:p-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-center mb-4 sm:mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
                 💰 AI Service Pricing
               </h2>
               
@@ -438,38 +438,38 @@ export default function Calculator() {
           </div>
           
           {/* Results Section */}
-          <div className="p-8 overflow-y-auto max-h-[80vh] bg-card/50 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold mb-6 text-primary font-heading">ROI Analysis</h3>
+          <div className="p-4 sm:p-6 md:p-8 overflow-y-auto max-h-[80vh] bg-card/50 backdrop-blur-sm">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary font-heading">ROI Analysis</h3>
             
             {/* Key Metrics */}
             <div className="space-y-4 mb-8">
-              <Card className="gradient-secondary text-white p-6 text-center shadow-neon border border-accent">
-                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.totalMonthlyIncrease)}</div>
-                <div className="text-lg opacity-90">Additional Monthly Revenue</div>
+              <Card className="gradient-secondary text-white p-4 sm:p-6 text-center shadow-neon border border-accent">
+                <div className="text-2xl sm:text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.totalMonthlyIncrease)}</div>
+                <div className="text-sm sm:text-lg opacity-90">Additional Monthly Revenue</div>
               </Card>
               
-              <Card className="gradient-neon text-white p-6 text-center shadow-neon border border-accent">
-                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) * 12)}</div>
-                <div className="text-lg opacity-90">Annual Cost Savings</div>
+              <Card className="gradient-neon text-white p-4 sm:p-6 text-center shadow-neon border border-accent">
+                <div className="text-2xl sm:text-3xl font-bold mb-2 font-heading text-white">{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) * 12)}</div>
+                <div className="text-sm sm:text-lg opacity-90">Annual Cost Savings</div>
               </Card>
               
-              <Card className="gradient-primary text-white p-6 text-center shadow-neon border border-primary">
-                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.annualIncrease)}</div>
-                <div className="text-lg opacity-90">Additional Yearly Revenue</div>
+              <Card className="gradient-primary text-white p-4 sm:p-6 text-center shadow-neon border border-primary">
+                <div className="text-2xl sm:text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.annualIncrease)}</div>
+                <div className="text-sm sm:text-lg opacity-90">Additional Yearly Revenue</div>
               </Card>
               
               
-              <Card className="gradient-success text-white p-6 text-center shadow-neon border border-success">
-                <div className="text-3xl font-bold mb-2 font-heading text-white">{Math.round(results.roiPercent)}%</div>
-                <div className="text-lg opacity-90">12-Month ROI</div>
+              <Card className="gradient-success text-white p-4 sm:p-6 text-center shadow-neon border border-success">
+                <div className="text-2xl sm:text-3xl font-bold mb-2 font-heading text-white">{Math.round(results.roiPercent)}%</div>
+                <div className="text-sm sm:text-lg opacity-90">12-Month ROI</div>
               </Card>
             </div>
             
             {/* Breakdown Cards */}
             <div className="space-y-6">
               {/* Outbound Performance */}
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
-                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+              <Card className="p-4 sm:p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-base sm:text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
                   📱 Outbound Lead Performance
                 </h4>
                 <div className="space-y-3">
@@ -489,8 +489,8 @@ export default function Calculator() {
               </Card>
               
               {/* Inbound Performance */}
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
-                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+              <Card className="p-4 sm:p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-base sm:text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
                   📞 Inbound Call Performance (Monthly)
                 </h4>
                 <div className="space-y-3">
@@ -519,13 +519,13 @@ export default function Calculator() {
               
 
               {/* Cost Analysis */}
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
-                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+              <Card className="p-4 sm:p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-base sm:text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
                   💰 Annual Cost Comparison
                 </h4>
                 
                 {/* Side by side comparison */}
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
                   {/* Current Costs */}
                   <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
                     <h5 className="font-bold text-destructive mb-3">Current Annual Costs</h5>
@@ -578,8 +578,8 @@ export default function Calculator() {
               </Card>
 
               {/* Detailed Breakdown Report */}
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
-                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+              <Card className="p-4 sm:p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-base sm:text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
                   📊 How We Calculate Your Benefits
                 </h4>
                 <div className="space-y-4">
@@ -607,7 +607,7 @@ export default function Calculator() {
                   {/* Bottom Line */}
                   <div className="p-4 bg-accent/5 border-l-4 border-accent rounded">
                     <h5 className="font-bold text-accent mb-2">🎯 Bottom Line Impact</h5>
-                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                        <div className="text-center">
                          <div className="font-bold text-lg text-primary">{formatCurrency(results.annualIncrease)}</div>
                          <div>Additional Revenue</div>
