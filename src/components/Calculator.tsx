@@ -170,8 +170,8 @@ export default function Calculator() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="gradient-primary rounded-t-3xl p-8 text-center text-white shadow-neon">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4 text-neon">AI Payback Estimator</h1>
-          <p className="text-xl opacity-90 text-glow">Calculate your return on AI automation investment</p>
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4 text-white">AI Payback Estimator</h1>
+          <p className="text-xl opacity-90 text-white">Calculate your return on AI automation investment</p>
         </div>
         
         {/* Main Content */}
@@ -427,22 +427,22 @@ export default function Calculator() {
           
           {/* Results Section */}
           <div className="p-8 overflow-y-auto max-h-[80vh] bg-card/50 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold mb-6 text-primary font-heading text-glow">ROI Analysis</h3>
+            <h3 className="text-2xl font-bold mb-6 text-primary font-heading">ROI Analysis</h3>
             
             {/* Key Metrics */}
             <div className="space-y-4 mb-8">
               <Card className="gradient-secondary text-white p-6 text-center shadow-neon border border-accent">
-                <div className="text-3xl font-bold mb-2 font-heading text-neon">{formatCurrency(results.totalMonthlyIncrease)}</div>
+                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.totalMonthlyIncrease)}</div>
                 <div className="text-lg opacity-90">Additional Monthly Revenue</div>
               </Card>
               
               <Card className="gradient-primary text-white p-6 text-center shadow-neon border border-primary">
-                <div className="text-3xl font-bold mb-2 font-heading text-neon">{formatCurrency(results.annualIncrease)}</div>
+                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.annualIncrease)}</div>
                 <div className="text-lg opacity-90">Additional Yearly Revenue</div>
               </Card>
               
               <Card className="gradient-success text-white p-6 text-center shadow-neon border border-success">
-                <div className="text-3xl font-bold mb-2 font-heading text-neon">{Math.round(results.roiPercent)}%</div>
+                <div className="text-3xl font-bold mb-2 font-heading text-white">{Math.round(results.roiPercent)}%</div>
                 <div className="text-lg opacity-90">12-Month ROI</div>
               </Card>
             </div>
