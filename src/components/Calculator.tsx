@@ -24,6 +24,12 @@ interface CalculatorData {
   aiInboundCallToAppt: number;
   inboundApptToCloseRate: number;
   
+  // Savings tracker
+  currentMarketingCosts: number;
+  currentOperationalCosts: number;
+  aiMarketingEfficiency: number;
+  aiOperationalSavings: number;
+  
   // Pricing
   aiUpfrontCost: number;
   aiMonthlyCost: number;
@@ -40,6 +46,10 @@ interface CalculationResults {
   aiInboundRevenue: number;
   missedCallRecovery: number;
   inboundImprovement: number;
+  
+  // Savings analysis
+  monthlyCostSavings: number;
+  yearlyCostSavings: number;
   
   // Cost analysis
   currentEmployeeCost: number;
@@ -65,6 +75,10 @@ const initialData: CalculatorData = {
   currentInboundCallToAppt: 0,
   aiInboundCallToAppt: 0,
   inboundApptToCloseRate: 0,
+  currentMarketingCosts: 0,
+  currentOperationalCosts: 0,
+  aiMarketingEfficiency: 0,
+  aiOperationalSavings: 0,
   aiUpfrontCost: 0,
   aiMonthlyCost: 0,
 };
@@ -79,6 +93,8 @@ export default function Calculator() {
     aiInboundRevenue: 0,
     missedCallRecovery: 0,
     inboundImprovement: 0,
+    monthlyCostSavings: 0,
+    yearlyCostSavings: 0,
     currentEmployeeCost: 0,
     currentAnsweringCost: 0,
     totalMonthlyIncrease: 0,
@@ -130,7 +146,13 @@ export default function Calculator() {
       const inboundCostSavings = totalCurrentInboundCosts - data.aiMonthlyCost;
       const totalInboundImprovement = inboundRevenueImprovement + inboundCostSavings;
       
-      const totalMonthlyIncrease = outboundImprovement + totalInboundImprovement;
+      // Calculate additional savings from AI efficiency
+      const marketingSavings = data.currentMarketingCosts * (data.aiMarketingEfficiency / 100);
+      const operationalSavings = data.currentOperationalCosts * (data.aiOperationalSavings / 100);
+      const monthlyCostSavings = marketingSavings + operationalSavings;
+      const yearlyCostSavings = monthlyCostSavings * 12;
+      
+      const totalMonthlyIncrease = outboundImprovement + totalInboundImprovement + monthlyCostSavings;
       const annualIncrease = totalMonthlyIncrease * 12;
       
       const totalInvestment = data.aiUpfrontCost + (data.aiMonthlyCost * 12);
@@ -145,6 +167,8 @@ export default function Calculator() {
         aiInboundRevenue,
         missedCallRecovery,
         inboundImprovement: totalInboundImprovement,
+        monthlyCostSavings,
+        yearlyCostSavings,
         currentEmployeeCost,
         currentAnsweringCost,
         totalMonthlyIncrease,
@@ -391,6 +415,65 @@ export default function Calculator() {
               </div>
             </Card>
             
+            {/* Savings Tracker Section */}
+            <Card className="p-6 mb-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
+              <h2 className="text-xl font-bold text-center mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
+                💾 Additional Savings Tracker
+              </h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="currentMarketingCosts">Current monthly marketing costs ($)</Label>
+                  <Input
+                    id="currentMarketingCosts"
+                    type="number"
+                    value={data.currentMarketingCosts}
+                    onChange={(e) => updateData('currentMarketingCosts', e.target.value)}
+                    className="mt-2"
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">Total monthly spending on ads, marketing tools, etc.</p>
+                </div>
+                
+                <div>
+                  <Label htmlFor="aiMarketingEfficiency">AI marketing efficiency improvement (%)</Label>
+                  <Input
+                    id="aiMarketingEfficiency"
+                    type="number"
+                    step="0.1"
+                    value={data.aiMarketingEfficiency}
+                    onChange={(e) => updateData('aiMarketingEfficiency', e.target.value)}
+                    className="mt-2"
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">% reduction in marketing costs due to AI efficiency</p>
+                </div>
+                
+                <div>
+                  <Label htmlFor="currentOperationalCosts">Current monthly operational costs ($)</Label>
+                  <Input
+                    id="currentOperationalCosts"
+                    type="number"
+                    value={data.currentOperationalCosts}
+                    onChange={(e) => updateData('currentOperationalCosts', e.target.value)}
+                    className="mt-2"
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">Other operational costs (CRM, tools, admin time)</p>
+                </div>
+                
+                <div>
+                  <Label htmlFor="aiOperationalSavings">AI operational savings (%)</Label>
+                  <Input
+                    id="aiOperationalSavings"
+                    type="number"
+                    step="0.1"
+                    value={data.aiOperationalSavings}
+                    onChange={(e) => updateData('aiOperationalSavings', e.target.value)}
+                    className="mt-2"
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">% reduction in operational costs due to AI automation</p>
+                </div>
+              </div>
+            </Card>
+
             {/* Pricing Section */}
             <Card className="p-6 border-2 border-accent shadow-glow bg-card/80 backdrop-blur-sm">
               <h2 className="text-xl font-bold text-center mb-6 pb-3 border-b-2 border-accent text-accent font-heading">
@@ -439,6 +522,11 @@ export default function Calculator() {
               <Card className="gradient-primary text-white p-6 text-center shadow-neon border border-primary">
                 <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.annualIncrease)}</div>
                 <div className="text-lg opacity-90">Additional Yearly Revenue</div>
+              </Card>
+              
+              <Card className="gradient-neon text-white p-6 text-center shadow-neon border border-accent">
+                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.yearlyCostSavings)}</div>
+                <div className="text-lg opacity-90">Yearly Cost Savings</div>
               </Card>
               
               <Card className="gradient-success text-white p-6 text-center shadow-neon border border-success">
@@ -495,6 +583,31 @@ export default function Calculator() {
                 </div>
               </Card>
               
+              {/* Savings Analysis */}
+              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+                  💾 Additional Savings
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span>Monthly Marketing Savings:</span>
+                    <span className="font-semibold text-success">+{formatCurrency(data.currentMarketingCosts * (data.aiMarketingEfficiency / 100))}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Monthly Operational Savings:</span>
+                    <span className="font-semibold text-success">+{formatCurrency(data.currentOperationalCosts * (data.aiOperationalSavings / 100))}</span>
+                  </div>
+                  <div className="flex justify-between pt-3 border-t-2 border-accent font-bold">
+                    <span>Total Monthly Savings:</span>
+                    <span className="text-success">+{formatCurrency(results.monthlyCostSavings)}</span>
+                  </div>
+                  <div className="flex justify-between font-bold">
+                    <span>Total Yearly Savings:</span>
+                    <span className="text-success">+{formatCurrency(results.yearlyCostSavings)}</span>
+                  </div>
+                </div>
+              </Card>
+
               {/* Cost Analysis */}
               <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
                 <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
@@ -516,6 +629,10 @@ export default function Calculator() {
                   <div className="flex justify-between">
                     <span>AI Monthly Support:</span>
                     <span className="font-semibold">{formatCurrency(data.aiMonthlyCost)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Monthly Cost Savings:</span>
+                    <span className="font-semibold text-success">+{formatCurrency(results.monthlyCostSavings)}</span>
                   </div>
                   <div className="flex justify-between pt-3 border-t-2 border-accent font-bold">
                     <span>Total Monthly Increase:</span>
