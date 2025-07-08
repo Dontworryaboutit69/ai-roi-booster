@@ -6,63 +6,70 @@
 
 @layer base {
   :root {
-    /* RevSquared AI Brand Colors */
-    --background: 0 0% 96%; /* Bright White */
-    --foreground: 0 0% 5%; /* Charcoal Black */
+    /* RevSquared AI Brand Colors - Exact Hex to HSL Conversion */
+    --background: 0 0% 96%; /* Bright White #F5F5F5 */
+    --foreground: 0 0% 5%; /* Charcoal Black #0D0D0D */
     
-    /* Primary: Neon Aqua */
-    --primary: 177 100% 45%; /* #00E5D6 */
+    /* Primary: Neon Aqua #00E5D6 */
+    --primary: 177 100% 45%;
     --primary-foreground: 0 0% 5%;
-    --primary-hover: 177 100% 40%;
+    --primary-hover: 177 100% 50%;
     
-    /* Secondary: Soft backgrounds */
-    --secondary: 242 100% 93%; /* Soft Lavender */
+    /* Secondary: Soft Lavender #D3D4FF */
+    --secondary: 239 100% 91%;
     --secondary-foreground: 0 0% 5%;
     
-    /* Accent: Hot Magenta */
-    --accent: 313 79% 56%; /* #E536C1 */
+    /* Accent: Hot Magenta #E536C1 */
+    --accent: 313 79% 56%;
     --accent-foreground: 0 0% 96%;
     
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
+    /* Success: Cyber Yellow #FEDD4D */
+    --success: 50 97% 64%;
+    --success-foreground: 0 0% 5%;
     
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 98%;
+    /* Warning: Cyber Yellow variant */
+    --warning: 50 97% 64%;
+    --warning-foreground: 0 0% 5%;
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    /* Destructive: Hot Magenta variant */
+    --destructive: 313 79% 56%;
+    --destructive-foreground: 0 0% 96%;
     
-    /* RevSquared AI Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(177 100% 45%), hsl(313 79% 56%));
-    --gradient-secondary: linear-gradient(135deg, hsl(177 100% 45%), hsl(254 70% 58%));
-    --gradient-success: linear-gradient(135deg, hsl(177 100% 45%), hsl(59 98% 64%));
-    --gradient-background: linear-gradient(135deg, hsl(254 70% 58%), hsl(240 61% 52%));
+    /* RevSquared AI Retro-Futuristic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(177 100% 45%), hsl(313 79% 56%)); /* Neon Aqua to Hot Magenta */
+    --gradient-secondary: linear-gradient(135deg, hsl(177 100% 45%), hsl(254 78% 55%)); /* Neon Aqua to Purple Grape */
+    --gradient-success: linear-gradient(135deg, hsl(177 100% 45%), hsl(50 97% 64%)); /* Neon Aqua to Cyber Yellow */
+    --gradient-background: linear-gradient(135deg, hsl(254 78% 55%), hsl(238 47% 24%)); /* Purple Grape to Deep Violet */
+    --gradient-neon: linear-gradient(135deg, hsl(313 79% 56%), hsl(238 47% 24%)); /* Hot Magenta to Deep Violet */
     
-    /* Cards and surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
-    --card-border: 220 20% 90%;
+    /* Cards and surfaces - Dark theme approach */
+    --card: 238 47% 24%; /* Deep Violet #20215A */
+    --card-foreground: 0 0% 96%;
+    --card-border: 313 79% 56%; /* Hot Magenta border */
     
-    --border: 220 20% 85%;
-    --ring: 220 70% 50%;
-    --muted: 220 20% 96%;
-    --muted-foreground: 220 15% 50%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --border: 239 100% 91%; /* Soft Lavender */
+    --ring: 177 100% 45%; /* Neon Aqua */
+    --muted: 239 100% 91%; /* Soft Lavender */
+    --muted-foreground: 238 47% 24%; /* Deep Violet */
+    --popover: 238 47% 24%; /* Deep Violet */
+    --popover-foreground: 0 0% 96%;
     
-    --input-background: 0 0% 100%;
-    --input-border: 220 20% 85%;
-    --input-border-focus: 220 70% 50%;
+    --input-background: 238 47% 24%; /* Deep Violet */
+    --input-border: 313 79% 56%; /* Hot Magenta */
+    --input-border-focus: 177 100% 45%; /* Neon Aqua */
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(220 20% 20% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(220 20% 20% / 0.1);
-    --shadow-lg: 0 20px 25px -5px hsl(220 20% 20% / 0.1);
-    --shadow-xl: 0 25px 50px -12px hsl(220 20% 20% / 0.25);
+    /* Neon glow shadows for retro-futuristic feel */
+    --shadow-sm: 0 1px 2px 0 hsl(177 100% 45% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(177 100% 45% / 0.2);
+    --shadow-lg: 0 20px 25px -5px hsl(177 100% 45% / 0.3);
+    --shadow-xl: 0 25px 50px -12px hsl(177 100% 45% / 0.4);
+    --shadow-neon: 0 0 20px hsl(177 100% 45% / 0.5), 0 0 40px hsl(313 79% 56% / 0.3);
+    --shadow-glow: 0 0 30px hsl(313 79% 56% / 0.6);
     
     /* RevSquared AI Typography */
     --font-heading: 'Audiowide', system-ui, sans-serif;
     --font-body: 'Manrope', system-ui, sans-serif;
+    --font-script: 'Pacifico', cursive;
     
     /* Spacing and layout */
     --radius: 0.75rem;
@@ -75,33 +82,37 @@
   }
 
   .dark {
-    --background: 0 0% 5%; /* Charcoal Black */
-    --foreground: 0 0% 96%; /* Bright White */
+    --background: 0 0% 5%; /* Charcoal Black #0D0D0D */
+    --foreground: 0 0% 96%; /* Bright White #F5F5F5 */
     
     --primary: 177 100% 45%; /* Neon Aqua */
     --primary-foreground: 0 0% 5%;
     --primary-hover: 177 100% 50%;
     
-    --secondary: 240 61% 15%; /* Deep Violet */
+    --secondary: 238 47% 24%; /* Deep Violet */
     --secondary-foreground: 0 0% 96%;
     
     --accent: 313 79% 56%; /* Hot Magenta */
     --accent-foreground: 0 0% 5%;
     
+    --card: 238 47% 24%; /* Deep Violet */
+    --card-foreground: 0 0% 96%;
+    --card-border: 313 79% 56%; /* Hot Magenta border */
+    
     --card: 220 15% 12%;
     --card-foreground: 220 10% 92%;
     --card-border: 220 15% 20%;
     
-    --border: 220 15% 25%;
-    --ring: 220 70% 55%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 15% 60%;
-    --popover: 220 15% 12%;
-    --popover-foreground: 220 10% 92%;
+    --border: 313 79% 56%; /* Hot Magenta */
+    --ring: 177 100% 45%; /* Neon Aqua */
+    --muted: 238 47% 24%; /* Deep Violet */
+    --muted-foreground: 239 100% 91%; /* Soft Lavender */
+    --popover: 238 47% 24%; /* Deep Violet */
+    --popover-foreground: 0 0% 96%;
     
-    --input-background: 220 15% 15%;
-    --input-border: 220 15% 25%;
-    --input-border-focus: 220 70% 55%;
+    --input-background: 238 47% 24%; /* Deep Violet */
+    --input-border: 313 79% 56%; /* Hot Magenta */
+    --input-border-focus: 177 100% 45%; /* Neon Aqua */
   }
 }
 
@@ -137,8 +148,20 @@
     background: var(--gradient-background);
   }
   
+  .gradient-neon {
+    background: var(--gradient-neon);
+  }
+  
   .shadow-elegant {
     box-shadow: var(--shadow-xl);
+  }
+  
+  .shadow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
   
   .transition-smooth {
@@ -147,6 +170,15 @@
   
   .transition-slow {
     transition: var(--transition-slow);
+  }
+  
+  /* Retro-futuristic neon text glow */
+  .text-neon {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 5px currentColor;
   }
   
   /* Remove number input arrows */
