@@ -97,6 +97,9 @@ export default function Calculator() {
 
   useEffect(() => {
     calculateResults();
+    // Debug logging
+    console.log('Current inbound rate:', data.currentInboundCallToAppt, '%');
+    console.log('AI inbound rate:', data.aiInboundCallToAppt, '%');
   }, [data]);
 
   const calculateResults = () => {
@@ -131,6 +134,12 @@ export default function Calculator() {
       const inboundRevenueImprovement = aiInboundRevenue - currentInboundRevenue;
       const inboundCostSavings = totalCurrentInboundCosts - data.aiMonthlyCost;
       const totalInboundImprovement = inboundRevenueImprovement + inboundCostSavings;
+      
+      // Debug logging
+      console.log('Current inbound revenue:', currentInboundRevenue);
+      console.log('AI inbound revenue:', aiInboundRevenue);  
+      console.log('Inbound revenue improvement:', inboundRevenueImprovement);
+      console.log('Total inbound improvement:', totalInboundImprovement);
       
       const totalMonthlyIncrease = outboundImprovement + totalInboundImprovement;
       const annualIncrease = totalMonthlyIncrease * 12;
