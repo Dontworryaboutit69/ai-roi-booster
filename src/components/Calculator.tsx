@@ -611,32 +611,124 @@ export default function Calculator() {
               {/* Cost Analysis */}
               <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
                 <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
-                  💰 Cost Analysis
+                  💰 Annual Cost Comparison
                 </h4>
-                <div className="space-y-3">
-                  <div className="flex justify-between">
-                    <span>Current Employee Cost:</span>
-                    <span className="font-semibold">{formatCurrency(results.currentEmployeeCost)}</span>
+                
+                {/* Side by side comparison */}
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  {/* Current Costs */}
+                  <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+                    <h5 className="font-bold text-destructive mb-3">Current Annual Costs</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>Employee Costs:</span>
+                        <span>{formatCurrency(results.currentEmployeeCost * 12)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Answering Service:</span>
+                        <span>{formatCurrency(results.currentAnsweringCost * 12)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Marketing Costs:</span>
+                        <span>{formatCurrency(data.currentMarketingCosts * 12)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Operational Costs:</span>
+                        <span>{formatCurrency(data.currentOperationalCosts * 12)}</span>
+                      </div>
+                      <div className="flex justify-between pt-2 border-t border-destructive/20 font-bold">
+                        <span>Total Annual:</span>
+                        <span>{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost + data.currentMarketingCosts + data.currentOperationalCosts) * 12)}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Current Answering Service:</span>
-                    <span className="font-semibold">{formatCurrency(results.currentAnsweringCost)}</span>
+                  
+                  {/* AI Costs */}
+                  <div className="p-4 bg-success/10 border border-success/20 rounded-lg">
+                    <h5 className="font-bold text-success mb-3">AI Annual Costs</h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span>Setup Cost (Year 1):</span>
+                        <span>{formatCurrency(data.aiUpfrontCost)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Monthly Support × 12:</span>
+                        <span>{formatCurrency(data.aiMonthlyCost * 12)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Reduced Marketing:</span>
+                        <span>{formatCurrency((data.currentMarketingCosts * 12) - (data.currentMarketingCosts * (data.aiMarketingEfficiency / 100) * 12))}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Reduced Operations:</span>
+                        <span>{formatCurrency((data.currentOperationalCosts * 12) - (data.currentOperationalCosts * (data.aiOperationalSavings / 100) * 12))}</span>
+                      </div>
+                      <div className="flex justify-between pt-2 border-t border-success/20 font-bold">
+                        <span>Total Annual:</span>
+                        <span>{formatCurrency(data.aiUpfrontCost + (data.aiMonthlyCost * 12) + ((data.currentMarketingCosts * 12) - (data.currentMarketingCosts * (data.aiMarketingEfficiency / 100) * 12)) + ((data.currentOperationalCosts * 12) - (data.currentOperationalCosts * (data.aiOperationalSavings / 100) * 12)))}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span>AI Setup Cost:</span>
-                    <span className="font-semibold">{formatCurrency(data.aiUpfrontCost)}</span>
+                </div>
+                
+                {/* Net Benefit Summary */}
+                <div className="p-6 bg-gradient-to-r from-success/20 to-primary/20 border-2 border-success rounded-lg text-center">
+                  <h5 className="font-bold text-lg mb-2">Annual Net Benefit</h5>
+                  <div className="text-3xl font-bold text-success mb-2">
+                    {formatCurrency(results.annualIncrease + results.yearlyCostSavings - (data.aiUpfrontCost + (data.aiMonthlyCost * 12)))}
                   </div>
-                  <div className="flex justify-between">
-                    <span>AI Monthly Support:</span>
-                    <span className="font-semibold">{formatCurrency(data.aiMonthlyCost)}</span>
+                  <p className="text-sm text-muted-foreground">
+                    Additional Revenue + Cost Savings - AI Investment
+                  </p>
+                </div>
+              </Card>
+
+              {/* Detailed Breakdown Report */}
+              <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
+                <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
+                  📊 How We Calculate Your Benefits
+                </h4>
+                <div className="space-y-4">
+                  {/* Revenue Improvements */}
+                  <div className="p-4 bg-primary/5 border-l-4 border-primary rounded">
+                    <h5 className="font-bold text-primary mb-2">💰 Revenue Improvements</h5>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>Speed to Lead:</strong> By responding instantly to {data.monthlyOutboundLeads} monthly leads, you increase conversion from {data.currentOutboundRate}% to {data.aiOutboundRate}%, booking {Math.round(data.monthlyOutboundLeads * (data.aiOutboundRate / 100) - data.monthlyOutboundLeads * (data.currentOutboundRate / 100))} more appointments monthly</li>
+                      <li>• <strong>24/7 Availability:</strong> By capturing {data.missedCalls} previously missed calls monthly, you recover an estimated {formatCurrency(results.missedCallRecovery)} in monthly revenue</li>
+                      <li>• <strong>Improved Qualification:</strong> AI increases inbound call-to-appointment rate from {data.currentInboundCallToAppt}% to {data.aiInboundCallToAppt}%</li>
+                    </ul>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Monthly Cost Savings:</span>
-                    <span className="font-semibold text-success">+{formatCurrency(results.monthlyCostSavings)}</span>
+                  
+                  {/* Cost Savings */}
+                  <div className="p-4 bg-success/5 border-l-4 border-success rounded">
+                    <h5 className="font-bold text-success mb-2">💾 Cost Savings</h5>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>Labor Costs:</strong> Reduce or eliminate {data.employeesHandlingCalls} employees at {formatCurrency(data.averageSalary)} each = {formatCurrency(results.currentEmployeeCost * 12)} annual savings</li>
+                      {data.hasAnsweringService === 'yes' && (
+                        <li>• <strong>Answering Service:</strong> Eliminate {formatCurrency(data.answeringServiceCost)} monthly cost = {formatCurrency(results.currentAnsweringCost * 12)} annual savings</li>
+                      )}
+                      <li>• <strong>Marketing Efficiency:</strong> {data.aiMarketingEfficiency}% improvement saves {formatCurrency(data.currentMarketingCosts * (data.aiMarketingEfficiency / 100) * 12)} annually</li>
+                      <li>• <strong>Operational Efficiency:</strong> {data.aiOperationalSavings}% improvement saves {formatCurrency(data.currentOperationalCosts * (data.aiOperationalSavings / 100) * 12)} annually</li>
+                    </ul>
                   </div>
-                  <div className="flex justify-between pt-3 border-t-2 border-accent font-bold">
-                    <span>Total Monthly Increase:</span>
-                    <span className="text-success">+{formatCurrency(results.totalMonthlyIncrease)}</span>
+                  
+                  {/* Bottom Line */}
+                  <div className="p-4 bg-accent/5 border-l-4 border-accent rounded">
+                    <h5 className="font-bold text-accent mb-2">🎯 Bottom Line Impact</h5>
+                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                      <div className="text-center">
+                        <div className="font-bold text-lg text-primary">{formatCurrency(results.annualIncrease)}</div>
+                        <div>Additional Revenue</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-bold text-lg text-success">+{formatCurrency(results.yearlyCostSavings)}</div>
+                        <div>Cost Savings</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-bold text-lg text-destructive">-{formatCurrency(data.aiUpfrontCost + (data.aiMonthlyCost * 12))}</div>
+                        <div>AI Investment</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>
