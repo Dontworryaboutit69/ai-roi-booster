@@ -439,6 +439,11 @@ export default function Calculator() {
                 <div className="text-lg opacity-90">Additional Monthly Revenue</div>
               </Card>
               
+              <Card className="gradient-neon text-white p-6 text-center shadow-neon border border-accent">
+                <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) * 12)}</div>
+                <div className="text-lg opacity-90">Annual Cost Savings</div>
+              </Card>
+              
               <Card className="gradient-primary text-white p-6 text-center shadow-neon border border-primary">
                 <div className="text-3xl font-bold mb-2 font-heading text-white">{formatCurrency(results.annualIncrease)}</div>
                 <div className="text-lg opacity-90">Additional Yearly Revenue</div>
@@ -551,10 +556,10 @@ export default function Calculator() {
                 <div className="p-6 bg-gradient-to-r from-success/20 to-primary/20 border-2 border-success rounded-lg text-center">
                   <h5 className="font-bold text-lg mb-2">Annual Net Benefit</h5>
                   <div className="text-3xl font-bold text-success mb-2">
-                    {formatCurrency(results.annualIncrease - (data.aiUpfrontCost + (data.aiMonthlyCost * 12)))}
+                    {formatCurrency(results.annualIncrease + ((results.currentEmployeeCost + results.currentAnsweringCost) * 12) - (data.aiUpfrontCost + (data.aiMonthlyCost * 12)))}
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Additional Revenue - AI Investment
+                    Additional Revenue + Cost Savings - AI Investment
                   </p>
                 </div>
               </Card>
@@ -590,14 +595,18 @@ export default function Calculator() {
                   <div className="p-4 bg-accent/5 border-l-4 border-accent rounded">
                     <h5 className="font-bold text-accent mb-2">🎯 Bottom Line Impact</h5>
                     <div className="grid md:grid-cols-3 gap-4 text-sm">
-                      <div className="text-center">
-                        <div className="font-bold text-lg text-primary">{formatCurrency(results.annualIncrease)}</div>
-                        <div>Additional Revenue</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-bold text-lg text-destructive">-{formatCurrency(data.aiUpfrontCost + (data.aiMonthlyCost * 12))}</div>
-                        <div>AI Investment</div>
-                      </div>
+                       <div className="text-center">
+                         <div className="font-bold text-lg text-primary">{formatCurrency(results.annualIncrease)}</div>
+                         <div>Additional Revenue</div>
+                       </div>
+                       <div className="text-center">
+                         <div className="font-bold text-lg text-success">+{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) * 12)}</div>
+                         <div>Cost Savings</div>
+                       </div>
+                       <div className="text-center">
+                         <div className="font-bold text-lg text-destructive">-{formatCurrency(data.aiUpfrontCost + (data.aiMonthlyCost * 12))}</div>
+                         <div>AI Investment</div>
+                       </div>
                     </div>
                   </div>
                 </div>
