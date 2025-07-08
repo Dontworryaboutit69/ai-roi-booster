@@ -170,7 +170,7 @@ export default function Calculator() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="gradient-primary rounded-t-3xl p-8 text-center text-white shadow-elegant">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">AI ROI Calculator</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">AI Payback Estimator</h1>
           <p className="text-xl opacity-90">Calculate your return on AI automation investment</p>
         </div>
         

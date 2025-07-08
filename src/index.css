@@ -6,20 +6,22 @@
 
 @layer base {
   :root {
-    /* Core brand colors for AI/tech theme */
-    --background: 0 0% 100%;
-    --foreground: 220 15% 15%;
+    /* RevSquared AI Brand Colors */
+    --background: 0 0% 96%; /* Bright White */
+    --foreground: 0 0% 5%; /* Charcoal Black */
     
-    /* Calculator specific colors */
-    --primary: 220 70% 50%; /* Tech blue */
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 220 70% 45%;
+    /* Primary: Neon Aqua */
+    --primary: 177 100% 45%; /* #00E5D6 */
+    --primary-foreground: 0 0% 5%;
+    --primary-hover: 177 100% 40%;
     
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 220 15% 15%;
+    /* Secondary: Soft backgrounds */
+    --secondary: 242 100% 93%; /* Soft Lavender */
+    --secondary-foreground: 0 0% 5%;
     
-    --accent: 270 50% 55%; /* Purple accent */
-    --accent-foreground: 0 0% 98%;
+    /* Accent: Hot Magenta */
+    --accent: 313 79% 56%; /* #E536C1 */
+    --accent-foreground: 0 0% 96%;
     
     --success: 142 76% 36%;
     --success-foreground: 0 0% 98%;
@@ -30,11 +32,11 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     
-    /* Gradient definitions */
-    --gradient-primary: linear-gradient(135deg, hsl(220 70% 50%), hsl(270 50% 55%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 70% 50%), hsl(200 70% 50%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
-    --gradient-background: linear-gradient(135deg, hsl(220 70% 50%), hsl(270 50% 55%));
+    /* RevSquared AI Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(177 100% 45%), hsl(313 79% 56%));
+    --gradient-secondary: linear-gradient(135deg, hsl(177 100% 45%), hsl(254 70% 58%));
+    --gradient-success: linear-gradient(135deg, hsl(177 100% 45%), hsl(59 98% 64%));
+    --gradient-background: linear-gradient(135deg, hsl(254 70% 58%), hsl(240 61% 52%));
     
     /* Cards and surfaces */
     --card: 0 0% 100%;
@@ -58,9 +60,9 @@
     --shadow-lg: 0 20px 25px -5px hsl(220 20% 20% / 0.1);
     --shadow-xl: 0 25px 50px -12px hsl(220 20% 20% / 0.25);
     
-    /* Typography */
-    --font-heading: 'Inter', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    /* RevSquared AI Typography */
+    --font-heading: 'Audiowide', system-ui, sans-serif;
+    --font-body: 'Manrope', system-ui, sans-serif;
     
     /* Spacing and layout */
     --radius: 0.75rem;
@@ -73,18 +75,18 @@
   }
 
   .dark {
-    --background: 220 15% 8%;
-    --foreground: 220 10% 92%;
+    --background: 0 0% 5%; /* Charcoal Black */
+    --foreground: 0 0% 96%; /* Bright White */
     
-    --primary: 220 70% 55%;
-    --primary-foreground: 220 15% 8%;
-    --primary-hover: 220 70% 60%;
+    --primary: 177 100% 45%; /* Neon Aqua */
+    --primary-foreground: 0 0% 5%;
+    --primary-hover: 177 100% 50%;
     
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 220 10% 92%;
+    --secondary: 240 61% 15%; /* Deep Violet */
+    --secondary-foreground: 0 0% 96%;
     
-    --accent: 270 50% 60%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 313 79% 56%; /* Hot Magenta */
+    --accent-foreground: 0 0% 5%;
     
     --card: 220 15% 12%;
     --card-foreground: 220 10% 92%;
