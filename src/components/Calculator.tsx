@@ -491,7 +491,7 @@ export default function Calculator() {
               {/* Inbound Performance */}
               <Card className="p-6 bg-card/80 backdrop-blur-sm border border-accent shadow-glow">
                 <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-accent font-heading">
-                  📞 Inbound Call Performance
+                  📞 Inbound Call Performance (Monthly)
                 </h4>
                 <div className="space-y-3">
                   <div className="flex justify-between">
@@ -506,8 +506,12 @@ export default function Calculator() {
                     <span>Missed Call Recovery:</span>
                     <span className="font-semibold">{formatCurrency(results.missedCallRecovery)}</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span>Monthly Cost Savings:</span>
+                    <span className="font-semibold text-success">+{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) - data.aiMonthlyCost)}</span>
+                  </div>
                   <div className="flex justify-between pt-3 border-t-2 border-accent font-bold">
-                    <span>Inbound Improvement:</span>
+                    <span>Total Monthly Improvement:</span>
                     <span className="text-success">+{formatCurrency(results.inboundImprovement)}</span>
                   </div>
                 </div>
