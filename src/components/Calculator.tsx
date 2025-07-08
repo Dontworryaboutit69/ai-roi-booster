@@ -508,7 +508,7 @@ export default function Calculator() {
                   </div>
                   <div className="flex justify-between">
                     <span>Monthly Cost Savings:</span>
-                    <span className="font-semibold text-success">+{formatCurrency((results.currentEmployeeCost + results.currentAnsweringCost) - data.aiMonthlyCost)}</span>
+                    <span className="font-semibold text-success">+{formatCurrency(results.currentEmployeeCost + results.currentAnsweringCost)}</span>
                   </div>
                   <div className="flex justify-between pt-3 border-t-2 border-accent font-bold">
                     <span>Total Monthly Improvement:</span>
