@@ -91,7 +91,7 @@ export default function Calculator() {
   const updateData = (field: keyof CalculatorData, value: string | number) => {
     setData(prev => ({
       ...prev,
-      [field]: typeof value === 'string' ? parseFloat(value) || 0 : value
+      [field]: field === 'hasAnsweringService' ? value : (typeof value === 'string' ? parseFloat(value) || 0 : value)
     }));
   };
 
